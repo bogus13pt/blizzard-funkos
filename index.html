@@ -68,8 +68,6 @@ input[type="text"]::placeholder{color:var(--muted)}
 .type-tag{font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;padding:3px 8px;border-radius:4px;white-space:nowrap}
 .excl-tag{font-size:11px;color:var(--muted2)}
 .excl-tag::before{content:'★ ';color:var(--yellow);font-size:10px}
-.preorder-badge{position:absolute;bottom:8px;left:8px;font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:3px 8px;border-radius:4px;background:rgba(251,191,36,0.18);border:1px solid rgba(251,191,36,0.4);color:#fbbf24;z-index:2;white-space:nowrap}
-.card.preorder{border-color:rgba(251,191,36,0.25)}
 .grid.list-view .card{display:flex;flex-direction:row;align-items:center}
 .grid.list-view .card-img{width:80px;height:80px;flex-shrink:0;border-radius:0}
 .grid.list-view .card-img img{padding:4px}
@@ -94,7 +92,7 @@ input[type="text"]::placeholder{color:var(--muted)}
     <div class="stat"><div class="stat-val" id="statOwned">0</div><div class="stat-lbl">Owned</div></div>
     <div class="stat"><div class="stat-val" id="statTotal">0</div><div class="stat-lbl">Total</div></div>
     <div class="stat"><div class="stat-val" id="statPct">0%</div><div class="stat-lbl">Completo</div></div>
-    <div class="stat"><div class="stat-val" id="statPreorder">0</div><div class="stat-lbl">Pré-Reserva</div></div>
+    <div class="stat"><div class="stat-val">4</div><div class="stat-lbl">Franchises</div></div>
   </div>
 </header>
 
@@ -161,11 +159,11 @@ const pops = [
   {num:"12",   name:"The Lich King (Glow)",           wave:"World of Warcraft", size:'3.75"', excl:"Game Covers · GameStop",    col:"#38bdf8", img:"imgs/12-lich-king-gamecover.jpg"},
 
   // ── WoW Novos 2024-2026 ──────────────────────────────────
-  {num:"989",  name:"Murloc (Ice Murloc)",            wave:"World of Warcraft", size:'3.75"', excl:"Blizzard · 20º Aniv. WoW · Out 2024", col:"#38bdf8", img:"imgs/989-ice-murloc.jpg",      preorder:false},
-  {num:"1224", name:"Finduin (Murloc Cosplay)",       wave:"World of Warcraft", size:'3.75"', excl:"Pré-reserva · 2026",        col:"#f59e0b", img:"imgs/1224-finduin-pt.webp",         preorder:true},
-  {num:"1225", name:"Grommloc (Murloc Cosplay)",      wave:"World of Warcraft", size:'3.75"', excl:"Pré-reserva · 2026",        col:"#16a34a", img:"imgs/1225-grommloc-pt.webp",        preorder:true},
-  {num:"1226", name:"Murkastrasza (Murloc Cosplay)",  wave:"World of Warcraft", size:'3.75"', excl:"Pré-reserva · 2026",        col:"#be123c", img:"imgs/1226-murkastrasza-pt.webp",    preorder:true},
-  {num:"—",    name:"Baby Murloc Thrall",             wave:"World of Warcraft", size:'3.75"', excl:"Pré-reserva · Ships Mai 2026", col:"#22c55e", img:"imgs/baby-murloc-thrall.jpg",    preorder:true},
+  {num:"989",  name:"Murloc (Ice Murloc)",            wave:"World of Warcraft", size:'3.75"', excl:"Blizzard · 20º Aniv. WoW · Out 2024", col:"#38bdf8", img:"imgs/989-ice-murloc.jpg"},
+  {num:"1224", name:"Finduin (Murloc Cosplay)",       wave:"World of Warcraft", size:'3.75"', excl:null,                        col:"#f59e0b", img:"imgs/1224-finduin-pt.webp"},
+  {num:"1225", name:"Grommloc (Murloc Cosplay)",      wave:"World of Warcraft", size:'3.75"', excl:null,                        col:"#16a34a", img:"imgs/1225-grommloc-pt.webp"},
+  {num:"1226", name:"Murkastrasza (Murloc Cosplay)",  wave:"World of Warcraft", size:'3.75"', excl:null,                        col:"#be123c", img:"imgs/1226-murkastrasza-pt.webp"},
+
 
   // ══════════════════════════════════════════════════════════
   // WARCRAFT — Filme 2016
@@ -205,7 +203,7 @@ const pops = [
   {num:"18",   name:"Kerrigan",                       wave:"StarCraft",         size:'3.75"', excl:null,                        col:"#7c3aed", img:"imgs/18-kerrigan-sg.jpg"},
   {num:"18",   name:"Kerrigan — Primal (Metallic)",   wave:"StarCraft",         size:'3.75"', excl:"SDCC 2014 · 2500 pcs",      col:"#6d28d9", img:"imgs/18-kerrigan-primal.jpg"},
   {num:"19",   name:"Jim Raynor",                     wave:"StarCraft",         size:'3.75"', excl:null,                        col:"#0891b2", img:"imgs/19-funko-pop-figure-starcraft-jim-raynor.jpg"},
-  {num:"19",   name:"Jim Raynor (Patriot)",           wave:"StarCraft",         size:'3.75"', excl:"Blizzard 2015",             col:"#1d4ed8", img:"imgs/19-raynor-patriot.jpg"},
+
   {num:"977",  name:"Kerrigan com Asas",              wave:"StarCraft",         size:'3.75"', excl:"GameStop · Wings of Liberty",col:"#a855f7", img:"imgs/977-kerrigan-wings.jpg"},
 
   // ══════════════════════════════════════════════════════════
@@ -237,7 +235,7 @@ const waveColors = {
   "KC-Diablo":          "#dc2626",
 };
 
-const waveFilters = ["All","World of Warcraft","Warcraft (Filme)","Diablo","StarCraft","Heroes of the Storm","Packs","Keychains","Pré-Reserva"];
+const waveFilters = ["All","World of Warcraft","Warcraft (Filme)","Diablo","StarCraft","Heroes of the Storm","Packs","Keychains"];
 let activeWave = "All", viewMode = "grid";
 const owned = new Set(JSON.parse(localStorage.getItem("bz_owned") || "[]"));
 const allItems = [...pops, ...packs, ...keychains];
@@ -255,9 +253,8 @@ function makeCard(data, delay) {
   const wc = waveColors[data.wave] || "#f97316";
   const key = itemKey(data);
   const isOwned = owned.has(key);
-  const isPreorder = !!data.preorder;
   const card = document.createElement("div");
-  card.className = "card" + (isOwned ? " owned" : "") + (isPreorder ? " preorder" : "");
+  card.className = "card" + (isOwned ? " owned" : "");
   card.style.animationDelay = delay + "s";
 
   const imgArea = document.createElement("div");
@@ -280,13 +277,6 @@ function makeCard(data, delay) {
   badge.style.background = wc;
   badge.textContent = data.wave;
   imgArea.appendChild(badge);
-
-  if (isPreorder) {
-    const prBadge = document.createElement("div");
-    prBadge.className = "preorder-badge";
-    prBadge.textContent = "PRÉ-RESERVA";
-    imgArea.appendChild(prBadge);
-  }
 
   const ownBtn = document.createElement("div");
   ownBtn.className = "owned-btn" + (isOwned ? " owned" : "");
@@ -330,27 +320,10 @@ function makeCard(data, delay) {
 function render() {
   const q = document.getElementById("search").value.toLowerCase().trim();
   const out = document.getElementById("output"); out.innerHTML = "";
-  const showPacks    = activeWave === "All" || activeWave === "Packs";
-  const showSingles  = activeWave !== "Packs" && activeWave !== "Keychains" && activeWave !== "Pré-Reserva";
-  const showKC       = activeWave === "All" || activeWave === "Keychains";
-  const showPreorder = activeWave === "Pré-Reserva";
+  const showPacks   = activeWave === "All" || activeWave === "Packs";
+  const showSingles = activeWave !== "Packs" && activeWave !== "Keychains";
+  const showKC      = activeWave === "All" || activeWave === "Keychains";
   let total = 0;
-
-  if (showPreorder) {
-    const f = [...pops, ...packs, ...keychains].filter(p =>
-      p.preorder && (!q || p.name.toLowerCase().includes(q) || (p.num||"").includes(q))
-    );
-    total += f.length;
-    if (f.length) {
-      const lbl = document.createElement("div"); lbl.className = "section-label";
-      lbl.innerHTML = `<span style="color:#fbbf24">PRÉ-RESERVA</span>`;
-      out.appendChild(lbl);
-      const g = document.createElement("div");
-      g.className = "grid" + (viewMode === "list" ? " list-view" : "");
-      f.forEach((p, i) => g.appendChild(makeCard(p, Math.min(i * 0.015, 0.3))));
-      out.appendChild(g);
-    }
-  }
 
   if (showSingles) {
     const waves = activeWave === "All"
@@ -419,11 +392,9 @@ function render() {
 
 function updateStats() {
   const t = allItems.length, n = owned.size, pct = t > 0 ? Math.round(n / t * 100) : 0;
-  const nPre = allItems.filter(p => p.preorder).length;
   document.getElementById("statOwned").textContent  = n;
   document.getElementById("statTotal").textContent  = t;
   document.getElementById("statPct").textContent    = pct + "%";
-  document.getElementById("statPreorder").textContent = nPre;
   document.getElementById("totalCount").textContent = t;
   document.getElementById("ownedCount").textContent = `✓ ${n} owned`;
 }
@@ -441,7 +412,7 @@ waveFilters.forEach(w => {
   const btn = document.createElement("button");
   btn.className = "filter-btn" + (w === "All" ? " active" : "");
   btn.textContent = w;
-  const wc = w === "All" ? "#f97316" : w === "Packs" ? "#22c55e" : w === "Keychains" ? "#0891b2" : w === "Pré-Reserva" ? "#fbbf24" : (waveColors[w] || "#f97316");
+  const wc = w === "All" ? "#f97316" : w === "Packs" ? "#22c55e" : w === "Keychains" ? "#0891b2" : (waveColors[w] || "#f97316");
   if (w === "All") btn.style.cssText = `background:${wc};color:#000;border-color:${wc}`;
   btn.addEventListener("click", () => {
     activeWave = w;
