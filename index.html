@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blizzard Funko Pop — Colecção Completa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07070f;--surface:#0e0e1e;--surface2:#14142a;--border:rgba(255,255,255,0.07);--border-bright:rgba(255,255,255,0.15);--orange:#f97316;--orange-dim:rgba(249,115,22,0.15);--yellow:#fbbf24;--green:#22c55e;--text:#e8eaf0;--muted:#5a6070;--muted2:#8892a4;--radius:14px;--card-w:162px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;min-height:100vh;padding-bottom:80px;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:999;opacity:.5}
+header{position:relative;overflow:hidden;padding:64px 24px 48px;text-align:center;background:linear-gradient(180deg,#0d0d22 0%,var(--bg) 100%);border-bottom:1px solid var(--border)}
+header::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 90% 60% at 50% -20%,rgba(249,115,22,.18) 0%,transparent 70%);pointer-events:none}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:40px 40px;mask-image:radial-gradient(ellipse 80% 80% at 50% 0%,black,transparent)}
+.eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:8px;text-transform:uppercase;color:var(--orange);margin-bottom:16px;position:relative;z-index:1}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,12vw,7.5rem);letter-spacing:6px;line-height:.9;position:relative;z-index:1;background:linear-gradient(135deg,#f97316 0%,#fbbf24 35%,#e2e8f0 70%,#38bdf8 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.subtitle{font-size:13px;color:var(--muted2);margin-top:14px;position:relative;z-index:1;letter-spacing:.5px}
+.subtitle strong{color:var(--orange);font-weight:600}
+.stats{display:flex;justify-content:center;gap:0;margin:28px auto 0;max-width:520px;position:relative;z-index:1;border:1px solid var(--border-bright);border-radius:12px;overflow:hidden;backdrop-filter:blur(8px);background:rgba(14,14,30,.6)}
+.stat{flex:1;padding:12px 16px;text-align:center;border-right:1px solid var(--border)}
+.stat:last-child{border-right:none}
+.stat-val{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:2px;color:var(--text);line-height:1}
+.stat-lbl{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:3px}
+.controls{max-width:1240px;margin:32px auto 0;padding:0 20px}
+.search-wrap{position:relative;margin-bottom:16px}
+.search-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:15px;pointer-events:none}
+input[type="text"]{width:100%;background:var(--surface);border:1px solid var(--border-bright);border-radius:10px;color:var(--text);font-family:'Barlow',sans-serif;font-size:15px;padding:13px 18px 13px 44px;outline:none;transition:border-color .2s,box-shadow .2s}
+input[type="text"]:focus{border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-dim)}
+input[type="text"]::placeholder{color:var(--muted)}
+.filter-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;align-items:center}
+.filter-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-right:4px;white-space:nowrap}
+.filter-btn{background:transparent;border:1px solid var(--border-bright);border-radius:999px;color:var(--muted2);cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;transition:all .15s;white-space:nowrap}
+.filter-btn:hover{background:rgba(255,255,255,.06);color:var(--text);border-color:rgba(255,255,255,.25)}
+.filter-btn.active{color:#000;border-color:transparent}
+.toolbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:8px}
+.owned-pill{background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.3);border-radius:8px;padding:7px 14px;font-size:12px;font-weight:700;color:var(--green);font-family:'Barlow Condensed',sans-serif;letter-spacing:.5px}
+.count-pill{font-size:12px;color:var(--muted);font-family:'Barlow Condensed',sans-serif;letter-spacing:.5px}
+.view-toggle{display:flex;gap:4px}
+.view-btn{background:var(--surface);border:1px solid var(--border);border-radius:7px;color:var(--muted);cursor:pointer;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:14px;transition:all .15s}
+.view-btn.active{background:var(--orange);border-color:var(--orange);color:#000}
+.section-label{max-width:1240px;margin:28px auto 12px;padding:0 20px;display:flex;align-items:center;gap:14px}
+.section-label span{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.section-label::before,.section-label::after{content:'';flex:1;height:1px;background:var(--border)}
+.grid{max-width:1240px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(var(--card-w),1fr));gap:12px}
+.grid.list-view{grid-template-columns:1fr}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;position:relative;transition:transform .2s,box-shadow .2s,border-color .2s;animation:rise .35s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.card:hover{transform:translateY(-5px)}
+.card.owned{outline:2px solid var(--green);outline-offset:-1px;background:var(--surface2)}
+.card-img{height:175px;background:#09091a;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.card-img img{width:100%;height:100%;object-fit:contain;padding:8px;transition:transform .35s}
+.card:hover .card-img img{transform:scale(1.1)}
+.placeholder{width:100%;height:100%;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:16px;display:none}
+.ph-num{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:2px;opacity:.9}
+.ph-name{font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-align:center;opacity:.4;line-height:1.3}
+.wave-badge{position:absolute;top:8px;left:8px;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;border-radius:999px;color:#000;z-index:2;white-space:nowrap}
+.owned-btn{position:absolute;top:8px;right:8px;width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(255,255,255,.25);background:rgba(0,0,0,.5);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:rgba(255,255,255,.3);transition:all .15s;user-select:none;z-index:2;backdrop-filter:blur(4px)}
+.owned-btn:hover{border-color:var(--green);color:var(--green)}
+.owned-btn.owned{background:var(--green);border-color:var(--green);color:#000}
+.card-body{padding:11px 13px 14px}
+.card-num{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;color:var(--muted);margin-bottom:4px;text-transform:uppercase}
+.card-name{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;color:var(--text);line-height:1.2;margin-bottom:7px;letter-spacing:.3px}
+.card-tags{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.size-tag{font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;padding:3px 8px;border-radius:4px;white-space:nowrap}
+.type-tag{font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;padding:3px 8px;border-radius:4px;white-space:nowrap}
+.excl-tag{font-size:11px;color:var(--muted2)}
+.excl-tag::before{content:'★ ';color:var(--yellow);font-size:10px}
+.preorder-badge{position:absolute;bottom:8px;left:8px;font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:3px 8px;border-radius:4px;background:rgba(251,191,36,0.18);border:1px solid rgba(251,191,36,0.4);color:#fbbf24;z-index:2;white-space:nowrap}
+.card.preorder{border-color:rgba(251,191,36,0.25)}
+.grid.list-view .card{display:flex;flex-direction:row;align-items:center}
+.grid.list-view .card-img{width:80px;height:80px;flex-shrink:0;border-radius:0}
+.grid.list-view .card-img img{padding:4px}
+.grid.list-view .card-body{flex:1;padding:10px 14px;display:flex;align-items:center;gap:16px}
+.grid.list-view .card-name{margin-bottom:0;font-size:15px}
+.grid.list-view .wave-badge{top:6px;left:6px;font-size:7px;padding:2px 6px}
+.grid.list-view .owned-btn{top:6px;right:6px}
+.empty{grid-column:1/-1;text-align:center;padding:80px 20px;color:var(--muted)}
+.empty-icon{font-size:3rem;margin-bottom:16px;opacity:.4}
+.empty p{font-family:'Barlow Condensed',sans-serif;font-size:18px;letter-spacing:1px}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--surface2);border-radius:99px}
+@media(max-width:480px){:root{--card-w:140px}h1{font-size:3.5rem}}
+</style>
+</head>
+<body>
+<header>
+  <div class="hero-grid"></div>
+  <div class="eyebrow">Funko Pop! · Games</div>
+  <h1>BLIZZARD</h1>
+  <p class="subtitle">Colecção completa — <strong id="totalCount">…</strong> figuras &amp; variantes &nbsp;·&nbsp; Sem Overwatch</p>
+  <div class="stats">
+    <div class="stat"><div class="stat-val" id="statOwned">0</div><div class="stat-lbl">Owned</div></div>
+    <div class="stat"><div class="stat-val" id="statTotal">0</div><div class="stat-lbl">Total</div></div>
+    <div class="stat"><div class="stat-val" id="statPct">0%</div><div class="stat-lbl">Completo</div></div>
+    <div class="stat"><div class="stat-val" id="statPreorder">0</div><div class="stat-lbl">Pré-Reserva</div></div>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="search-wrap">
+    <span class="search-icon">⌕</span>
+    <input type="text" id="search" placeholder="Pesquisar por nome, número, franchise…" autocomplete="off" spellcheck="false">
+  </div>
+  <div class="filter-row">
+    <span class="filter-label">Franchise</span>
+    <div id="filters"></div>
+  </div>
+  <div class="toolbar">
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+      <div class="owned-pill" id="ownedCount">✓ 0 owned</div>
+      <div class="count-pill" id="countPill">A mostrar 0 itens</div>
+    </div>
+    <div class="view-toggle">
+      <button class="view-btn active" id="gridViewBtn" title="Grid" onclick="setView('grid')">⊞</button>
+      <button class="view-btn" id="listViewBtn" title="Lista" onclick="setView('list')">☰</button>
+    </div>
+  </div>
+</div>
+<div id="output"></div>
+
+<script>
+// ─── DATA ────────────────────────────────────────────────────────────────────
+
+const pops = [
+
+  // ══════════════════════════════════════════════════════════
+  // WORLD OF WARCRAFT — Pop! Games
+  // ══════════════════════════════════════════════════════════
+  {num:"14",   name:"Illidan",                       wave:"World of Warcraft", size:'3.75"', excl:null,                        col:"#7c3aed", img:"imgs/14-funko-pop-figure-world-of-warcraft-illidan.jpg"},
+  {num:"14",   name:"Illidan (Metallic)",             wave:"World of Warcraft", size:'3.75"', excl:"Blizzard",                  col:"#6d28d9", img:"imgs/14-funko-pop-figure-world-of-warcraft-illidan-metallic.jpg"},
+  {num:"14",   name:"Illidan (Black Shadow)",         wave:"World of Warcraft", size:'3.75"', excl:"SDCC 2013",                 col:"#1e1b4b", img:"imgs/14-illidan-black.jpg"},
+  {num:"14",   name:"Illidan (Gold)",                 wave:"World of Warcraft", size:'3.75"', excl:"Pop Asia 2015",             col:"#ca8a04", img:"imgs/14-illidan-gold.jpg"},
+  {num:"15",   name:"Arthas",                         wave:"World of Warcraft", size:'3.75"', excl:null,                        col:"#60a5fa", img:"imgs/15-funko-pop-figure-world-of-warcraft-arthas.jpg"},
+  {num:"30",   name:"Sylvanas",                       wave:"World of Warcraft", size:'3.75"', excl:null,                        col:"#9333ea", img:"imgs/30-sylvanas.jpg"},
+  {num:"30",   name:"Sylvanas (Lady Sylvanas)",       wave:"World of Warcraft", size:'3.75"', excl:"Blizzard",                  col:"#7e22ce", img:"imgs/30-sylvanas-blizzard.jpg"},
+  {num:"31",   name:"Thrall",                         wave:"World of Warcraft", size:'3.75"', excl:null,                        col:"#16a34a", img:"imgs/31-funko-pop-figure-world-of-warcraft-thrall.jpg"},
+  {num:"32",   name:"Deathwing",                      wave:"World of Warcraft", size:'6"',    excl:null,                        col:"#dc2626", img:"imgs/32-deathwing.jpg"},
+  {num:"32",   name:"Deathwing (Gold)",               wave:"World of Warcraft", size:'6"',    excl:"Pop Asia 2015",             col:"#ca8a04", img:"imgs/32-deathwing-gold.jpg"},
+  {num:"33",   name:"Murloc",                         wave:"World of Warcraft", size:'3.75"', excl:null,                        col:"#22c55e", img:"imgs/33-murloc-ee.jpg"},
+  {num:"33",   name:"Murloc (GITD)",                  wave:"World of Warcraft", size:'3.75"', excl:"ECCC 2016 · 300 pcs",       col:"#4ade80", img:"imgs/33-murloc-glow.jpg"},
+  {num:"33",   name:"Murloc (Spectral)",              wave:"World of Warcraft", size:'3.75"', excl:"SDCC 2016 · 2016 pcs",      col:"#a7f3d0", img:"imgs/33-murloc-spectral.jpg"},
+  {num:"33",   name:"Murloc (White)",                 wave:"World of Warcraft", size:'3.75"', excl:"GameStop",                  col:"#e2e8f0", img:"imgs/33-murloc-white-sg.jpg"},
+  {num:"33",   name:"Murloc (Purple)",                wave:"World of Warcraft", size:'3.75"', excl:"Blizzard",                  col:"#a855f7", img:"imgs/33-murloc-purple.jpg"},
+  {num:"33",   name:"Murloc Blue (GITD)",             wave:"World of Warcraft", size:'3.75"', excl:"Blizzard",                  col:"#38bdf8", img:"imgs/33-murloc-blue-glow.jpg"},
+  {num:"34",   name:"Mur'ghoul",                      wave:"World of Warcraft", size:'3.75"', excl:"Blizzcon 2014",             col:"#78350f", img:"imgs/34-murghoul.jpg"},
+  {num:"521",  name:"Lady Sylvanas (Gold)",           wave:"World of Warcraft", size:'3.75"', excl:"Blizzcon 2019 Timewalkers", col:"#fbbf24", img:"imgs/521-sylvanas-gold.jpg"},
+  {num:"990",  name:"Sylvanas",                       wave:"World of Warcraft", size:'3.75"', excl:null,                        col:"#9333ea", img:"imgs/990-sylvanas-sg.jpg"},
+  {num:"990",  name:"Sylvanas (Chase — Shadow)",      wave:"World of Warcraft", size:'3.75"', excl:"Chase",                    col:"#6b21a8", img:"imgs/990-sylvanas-chase.jpg"},
+  {num:"991",  name:"The Lich King",                  wave:"World of Warcraft", size:'3.75"', excl:null,                        col:"#60a5fa", img:"imgs/991-lich-king.jpg"},
+  {num:"1045", name:"Alleria Windrunner",             wave:"World of Warcraft", size:'3.75"', excl:"The War Within",            col:"#f59e0b", img:"imgs/1045-alleria.jpg"},
+  {num:"1046", name:"Thrall",                         wave:"World of Warcraft", size:'3.75"', excl:"The War Within",            col:"#16a34a", img:"imgs/1046-thrall.jpg"},
+  {num:"1099", name:"Anduin",                         wave:"World of Warcraft", size:'3.75"', excl:"The War Within",            col:"#3b82f6", img:"imgs/1099-anduin.jpg"},
+  {num:"1100", name:"Jaina Proudmoore",               wave:"World of Warcraft", size:'3.75"', excl:"The War Within",            col:"#0891b2", img:"imgs/1100-jaina.jpg"},
+  {num:"1101", name:"Illidan",                        wave:"World of Warcraft", size:'3.75"', excl:"The War Within",            col:"#7c3aed", img:"imgs/1101-funko-pop-figure-world-of-warcraft-illidan.jpg"},
+  {num:"1101", name:"Illidan (Chase — Glow)",         wave:"World of Warcraft", size:'3.75"', excl:"Chase · The War Within",    col:"#a78bfa", img:"imgs/1101-illidan-glow.jpg"},
+  {num:"1102", name:"Xal'atath",                      wave:"World of Warcraft", size:'3.75"', excl:"The War Within",            col:"#581c87", img:"imgs/1102-xalatath.jpg"},
+
+  // WoW Pop! Game Covers
+  {num:"12",   name:"The Lich King (Glow)",           wave:"World of Warcraft", size:'3.75"', excl:"Game Covers · GameStop",    col:"#38bdf8", img:"imgs/12-lich-king-gamecover.jpg"},
+
+  // ── WoW Novos 2024-2026 ──────────────────────────────────
+  {num:"989",  name:"Murloc (Ice Murloc)",            wave:"World of Warcraft", size:'3.75"', excl:"Blizzard · 20º Aniv. WoW · Out 2024", col:"#38bdf8", img:"imgs/989-ice-murloc.jpg",      preorder:false},
+  {num:"1224", name:"Finduin (Murloc Cosplay)",       wave:"World of Warcraft", size:'3.75"', excl:"Pré-reserva · 2026",        col:"#f59e0b", img:"imgs/1224-finduin-pt.webp",         preorder:true},
+  {num:"1225", name:"Grommloc (Murloc Cosplay)",      wave:"World of Warcraft", size:'3.75"', excl:"Pré-reserva · 2026",        col:"#16a34a", img:"imgs/1225-grommloc-pt.webp",        preorder:true},
+  {num:"1226", name:"Murkastrasza (Murloc Cosplay)",  wave:"World of Warcraft", size:'3.75"', excl:"Pré-reserva · 2026",        col:"#be123c", img:"imgs/1226-murkastrasza-pt.webp",    preorder:true},
+  {num:"—",    name:"Baby Murloc Thrall",             wave:"World of Warcraft", size:'3.75"', excl:"Pré-reserva · Ships Mai 2026", col:"#22c55e", img:"imgs/baby-murloc-thrall.jpg",    preorder:true},
+
+  // ══════════════════════════════════════════════════════════
+  // WARCRAFT — Filme 2016
+  // ══════════════════════════════════════════════════════════
+  {num:"284",  name:"Lothar",                         wave:"Warcraft (Filme)",  size:'3.75"', excl:null,                        col:"#b45309", img:"imgs/284-funko-pop-figure-warcraft-lothar.jpg"},
+  {num:"285",  name:"King Llane",                     wave:"Warcraft (Filme)",  size:'3.75"', excl:null,                        col:"#fbbf24", img:"imgs/285-funko-pop-figure-warcraft-king-llane.jpg"},
+  {num:"286",  name:"Garona",                         wave:"Warcraft (Filme)",  size:'3.75"', excl:null,                        col:"#16a34a", img:"imgs/286-funko-pop-figure-warcraft-garona.jpg"},
+  {num:"287",  name:"Durotan",                        wave:"Warcraft (Filme)",  size:'6"',    excl:null,                        col:"#b91c1c", img:"imgs/287-funko-pop-figure-warcraft-durotan.jpg"},
+  {num:"288",  name:"Orgrim",                         wave:"Warcraft (Filme)",  size:'6"',    excl:null,                        col:"#78350f", img:"imgs/288-funko-pop-figure-warcraft-orgrim.jpg"},
+
+  // ══════════════════════════════════════════════════════════
+  // DIABLO — Pop! Games
+  // ══════════════════════════════════════════════════════════
+  {num:"16",   name:"Diablo",                         wave:"Diablo",            size:'3.75"', excl:null,                        col:"#dc2626", img:"imgs/16-funko-pop-figure-diablo-diablo.jpg"},
+  {num:"17",   name:"Tyrael",                         wave:"Diablo",            size:'3.75"', excl:null,                        col:"#60a5fa", img:"imgs/17-funko-pop-figure-diablo-tyrael.jpg"},
+  {num:"61",   name:"Demonic Tyrael",                 wave:"Diablo",            size:'3.75"', excl:"SDCC 2015 / Blizzard",      col:"#1e1b4b", img:"imgs/61-demonic-tyrael.jpg"},
+  {num:"600",  name:"Tyrael (Metallic)",              wave:"Diablo",            size:'3.75"', excl:"GameStop · E3 2020",        col:"#9ca3af", img:"imgs/600-funko-pop-figure-diablo-tyrael-metallic.jpg"},
+  {num:"941",  name:"Druid",                          wave:"Diablo",            size:'3.75"', excl:null,                        col:"#166534", img:"imgs/941-druid.jpg"},
+  {num:"942",  name:"Lilith",                         wave:"Diablo",            size:'6"',    excl:null,                        col:"#be123c", img:"imgs/942-lilith.jpg"},
+  {num:"942",  name:"Lilith (GITD)",                  wave:"Diablo",            size:'6"',    excl:"Amazon",                   col:"#f43f5e", img:"imgs/942-lilith-glow.jpg"},
+  {num:"952",  name:"Inarius",                        wave:"Diablo",            size:'3.75"', excl:null,                        col:"#fbbf24", img:"imgs/952-inarius.jpg"},
+  {num:"953",  name:"Treasure Goblin",                wave:"Diablo",            size:'3.75"', excl:null,                        col:"#a855f7", img:"imgs/953-treasure-goblin.jpg"},
+  {num:"992",  name:"Malthael",                       wave:"Diablo",            size:'3.75"', excl:"Blizzard · Reaper of Souls",col:"#374151", img:"imgs/992-malthael.jpg"},
+  {num:"1008", name:"Mephisto",                       wave:"Diablo",            size:'3.75"', excl:null,                        col:"#7f1d1d", img:"imgs/1008-mephisto.jpg"},
+  {num:"1009", name:"Rogue with Daggers",             wave:"Diablo",            size:'3.75"', excl:null,                        col:"#991b1b", img:"imgs/diablo-rogue.jpg"},
+  {num:"1010", name:"The Butcher",                    wave:"Diablo",            size:'6"',    excl:null,                        col:"#7f1d1d", img:"imgs/diablo-butcher.jpg"},
+  {num:"127",  name:"Angel Imperius",                 wave:"Diablo",            size:'5.2"',  excl:"Funko Shop LE 5000 · 2025", col:"#fbbf24", img:"imgs/127-angel-imperius.jpg"},
+
+  {num:"1047", name:"Deckard Cain",                   wave:"Diablo",            size:'3.75"', excl:null,                        col:"#78350f", img:"imgs/1047-deckard-cain.jpg"},
+
+  // Diablo Pop! Game Covers
+  {num:"03",   name:"Dark Wanderer (Glow)",           wave:"Diablo",            size:'3.75"', excl:"Game Covers · GameStop",    col:"#dc2626", img:"imgs/03-dark-wanderer.jpg"},
+
+  // ══════════════════════════════════════════════════════════
+  // STARCRAFT — Pop! Games
+  // ══════════════════════════════════════════════════════════
+  {num:"18",   name:"Kerrigan",                       wave:"StarCraft",         size:'3.75"', excl:null,                        col:"#7c3aed", img:"imgs/18-kerrigan-sg.jpg"},
+  {num:"18",   name:"Kerrigan — Primal (Metallic)",   wave:"StarCraft",         size:'3.75"', excl:"SDCC 2014 · 2500 pcs",      col:"#6d28d9", img:"imgs/18-kerrigan-primal.jpg"},
+  {num:"19",   name:"Jim Raynor",                     wave:"StarCraft",         size:'3.75"', excl:null,                        col:"#0891b2", img:"imgs/19-funko-pop-figure-starcraft-jim-raynor.jpg"},
+  {num:"19",   name:"Jim Raynor (Patriot)",           wave:"StarCraft",         size:'3.75"', excl:"Blizzard 2015",             col:"#1d4ed8", img:"imgs/19-raynor-patriot.jpg"},
+  {num:"977",  name:"Kerrigan com Asas",              wave:"StarCraft",         size:'3.75"', excl:"GameStop · Wings of Liberty",col:"#a855f7", img:"imgs/977-kerrigan-wings.jpg"},
+
+  // ══════════════════════════════════════════════════════════
+  // HEROES OF THE STORM — Pop! Games
+  // ══════════════════════════════════════════════════════════
+  {num:"61",   name:"Demonic Tyrael",                 wave:"Heroes of the Storm",size:'3.75"',excl:"SDCC 2015 / Blizzard",      col:"#f59e0b", img:"imgs/61-demonic-tyrael.jpg"},
+];
+
+const packs = [
+  {name:"Murloc 3-Pack",       wave:"WoW Multi-Pack", excl:"SDCC 2015 · 2016 pcs", col:"#22c55e", img:"imgs/pack-murloc-3pack.jpg"},
+  {name:"Durotan & Orgrim",    wave:"WoW Multi-Pack", excl:"FYE",                  col:"#78350f", img:"imgs/287-funko-pop-figure-warcraft-durotan.jpg"},
+];
+
+const keychains = [
+  {name:"Murloc",              wave:"KC-WoW",    excl:null,              col:"#22c55e", img:"imgs/keychain-murloc-ft.jpg"},
+  {name:"Treasure Goblin",     wave:"KC-Diablo", excl:null,              col:"#a855f7", img:"imgs/kc-diablo-treasure-goblin.jpg"},
+];
+
+// ─── APP ─────────────────────────────────────────────────────────────────────
+
+const waveColors = {
+  "World of Warcraft":  "#7c3aed",
+  "Warcraft (Filme)":   "#b45309",
+  "Diablo":             "#dc2626",
+  "StarCraft":          "#0891b2",
+  "Heroes of the Storm":"#f59e0b",
+  "WoW Multi-Pack":     "#22c55e",
+  "KC-WoW":             "#22c55e",
+  "KC-Diablo":          "#dc2626",
+};
+
+const waveFilters = ["All","World of Warcraft","Warcraft (Filme)","Diablo","StarCraft","Heroes of the Storm","Packs","Keychains","Pré-Reserva"];
+let activeWave = "All", viewMode = "grid";
+const owned = new Set(JSON.parse(localStorage.getItem("bz_owned") || "[]"));
+const allItems = [...pops, ...packs, ...keychains];
+
+function sizeStyle(s) {
+  if (s === '6"')  return {bg:"#f59e0b", fg:"#000"};
+  if (s === '10"') return {bg:"#f43f5e", fg:"#fff"};
+  if (s === '5.2"')return {bg:"#ca8a04", fg:"#000"};
+  return {bg:"rgba(255,255,255,0.08)", fg:"#8892a4"};
+}
+
+function itemKey(d) { return (d.num || "pack") + "|" + d.name; }
+
+function makeCard(data, delay) {
+  const wc = waveColors[data.wave] || "#f97316";
+  const key = itemKey(data);
+  const isOwned = owned.has(key);
+  const isPreorder = !!data.preorder;
+  const card = document.createElement("div");
+  card.className = "card" + (isOwned ? " owned" : "") + (isPreorder ? " preorder" : "");
+  card.style.animationDelay = delay + "s";
+
+  const imgArea = document.createElement("div");
+  imgArea.className = "card-img";
+
+  const img = document.createElement("img");
+  img.alt = data.name; img.loading = "lazy"; img.src = data.img;
+
+  const ph = document.createElement("div");
+  ph.className = "placeholder";
+  ph.style.cssText = "display:none;background:" + wc + "10";
+  const short = data.name.replace(/\s*\(.*?\)/g, "").trim();
+  ph.innerHTML = `<div class="ph-num" style="color:${wc}">${data.num || "•"}</div><div class="ph-name" style="color:${wc}">${short.toUpperCase()}</div>`;
+  img.onerror = () => { img.style.display = "none"; ph.style.display = "flex"; };
+  imgArea.appendChild(ph);
+  imgArea.appendChild(img);
+
+  const badge = document.createElement("div");
+  badge.className = "wave-badge";
+  badge.style.background = wc;
+  badge.textContent = data.wave;
+  imgArea.appendChild(badge);
+
+  if (isPreorder) {
+    const prBadge = document.createElement("div");
+    prBadge.className = "preorder-badge";
+    prBadge.textContent = "PRÉ-RESERVA";
+    imgArea.appendChild(prBadge);
+  }
+
+  const ownBtn = document.createElement("div");
+  ownBtn.className = "owned-btn" + (isOwned ? " owned" : "");
+  ownBtn.textContent = "✓";
+  ownBtn.addEventListener("click", e => {
+    e.stopPropagation();
+    if (owned.has(key)) { owned.delete(key); ownBtn.classList.remove("owned"); card.classList.remove("owned"); }
+    else { owned.add(key); ownBtn.classList.add("owned"); card.classList.add("owned"); }
+    localStorage.setItem("bz_owned", JSON.stringify([...owned]));
+    updateStats();
+  });
+  imgArea.appendChild(ownBtn);
+  card.appendChild(imgArea);
+
+  const ss = sizeStyle(data.size);
+  const isKC = data.wave && data.wave.startsWith("KC-");
+  const body = document.createElement("div");
+  body.className = "card-body";
+
+  let typeBadge = "";
+  if (isKC) {
+    typeBadge = `<span class="type-tag" style="background:#0891b2;color:#fff">Keychain 1.5"</span>`;
+  } else if (data.img && data.img.includes("gamecover")) {
+    typeBadge = `<span class="type-tag" style="background:#0e7490;color:#fff">Game Cover</span>`;
+  }
+
+  body.innerHTML = `
+    ${data.num && data.num !== "—" ? `<div class="card-num">#${data.num}</div>` : (isKC ? `<div class="card-num">KEYCHAIN</div>` : "")}
+    <div class="card-name">${data.name}</div>
+    <div class="card-tags">
+      ${typeBadge || (data.size ? `<span class="size-tag" style="background:${ss.bg};color:${ss.fg}">${data.size}</span>` : "")}
+      ${data.excl ? `<span class="excl-tag">${data.excl}</span>` : ""}
+    </div>`;
+  card.appendChild(body);
+
+  card.addEventListener("mouseenter", () => { card.style.borderColor = wc + "60"; card.style.boxShadow = `0 16px 40px ${wc}20`; });
+  card.addEventListener("mouseleave", () => { card.style.borderColor = ""; card.style.boxShadow = ""; });
+  return card;
+}
+
+function render() {
+  const q = document.getElementById("search").value.toLowerCase().trim();
+  const out = document.getElementById("output"); out.innerHTML = "";
+  const showPacks    = activeWave === "All" || activeWave === "Packs";
+  const showSingles  = activeWave !== "Packs" && activeWave !== "Keychains" && activeWave !== "Pré-Reserva";
+  const showKC       = activeWave === "All" || activeWave === "Keychains";
+  const showPreorder = activeWave === "Pré-Reserva";
+  let total = 0;
+
+  if (showPreorder) {
+    const f = [...pops, ...packs, ...keychains].filter(p =>
+      p.preorder && (!q || p.name.toLowerCase().includes(q) || (p.num||"").includes(q))
+    );
+    total += f.length;
+    if (f.length) {
+      const lbl = document.createElement("div"); lbl.className = "section-label";
+      lbl.innerHTML = `<span style="color:#fbbf24">PRÉ-RESERVA</span>`;
+      out.appendChild(lbl);
+      const g = document.createElement("div");
+      g.className = "grid" + (viewMode === "list" ? " list-view" : "");
+      f.forEach((p, i) => g.appendChild(makeCard(p, Math.min(i * 0.015, 0.3))));
+      out.appendChild(g);
+    }
+  }
+
+  if (showSingles) {
+    const waves = activeWave === "All"
+      ? ["World of Warcraft", "Warcraft (Filme)", "Diablo", "StarCraft", "Heroes of the Storm"]
+      : [activeWave];
+
+    waves.forEach(w => {
+      const f = pops.filter(p =>
+        p.wave === w &&
+        (!q || p.name.toLowerCase().includes(q) || (p.num||"").includes(q) || p.wave.toLowerCase().includes(q))
+      );
+      if (!f.length) return;
+      total += f.length;
+      const wc = waveColors[w] || "#f97316";
+      const lbl = document.createElement("div");
+      lbl.className = "section-label";
+      lbl.innerHTML = `<span style="color:${wc}">${w.toUpperCase()}</span>`;
+      out.appendChild(lbl);
+      const g = document.createElement("div");
+      g.className = "grid" + (viewMode === "list" ? " list-view" : "");
+      f.forEach((p, i) => g.appendChild(makeCard(p, Math.min(i * 0.015, 0.3))));
+      out.appendChild(g);
+    });
+  }
+
+  if (showPacks) {
+    const f = packs.filter(p => !q || p.name.toLowerCase().includes(q) || p.wave.toLowerCase().includes(q));
+    total += f.length;
+    if (f.length) {
+      const lbl = document.createElement("div"); lbl.className = "section-label";
+      lbl.innerHTML = `<span style="color:#22c55e">MULTI-PACKS</span>`;
+      out.appendChild(lbl);
+      const g = document.createElement("div");
+      g.className = "grid" + (viewMode === "list" ? " list-view" : "");
+      f.forEach((p, i) => g.appendChild(makeCard(p, Math.min(i * 0.05, 0.2))));
+      out.appendChild(g);
+    }
+  }
+
+  if (showKC) {
+    const f = keychains.filter(p =>
+      (activeWave === "All" || activeWave === "Keychains") &&
+      (!q || p.name.toLowerCase().includes(q) || p.wave.toLowerCase().includes(q))
+    );
+    total += f.length;
+    if (f.length) {
+      const lbl = document.createElement("div"); lbl.className = "section-label";
+      lbl.innerHTML = `<span style="color:#0891b2">POCKET POP! KEYCHAINS · 1.5"</span>`;
+      out.appendChild(lbl);
+      const g = document.createElement("div");
+      g.className = "grid" + (viewMode === "list" ? " list-view" : "");
+      f.forEach((p, i) => g.appendChild(makeCard(p, Math.min(i * 0.02, 0.3))));
+      out.appendChild(g);
+    }
+  }
+
+  if (!total) {
+    const g = document.createElement("div"); g.className = "grid";
+    g.innerHTML = `<div class="empty"><div class="empty-icon">⊘</div><p>Nenhuma figura encontrada "${q}"</p></div>`;
+    out.appendChild(g);
+  }
+
+  document.getElementById("countPill").textContent = `A mostrar ${total} item${total !== 1 ? "s" : ""}`;
+  updateStats();
+}
+
+function updateStats() {
+  const t = allItems.length, n = owned.size, pct = t > 0 ? Math.round(n / t * 100) : 0;
+  const nPre = allItems.filter(p => p.preorder).length;
+  document.getElementById("statOwned").textContent  = n;
+  document.getElementById("statTotal").textContent  = t;
+  document.getElementById("statPct").textContent    = pct + "%";
+  document.getElementById("statPreorder").textContent = nPre;
+  document.getElementById("totalCount").textContent = t;
+  document.getElementById("ownedCount").textContent = `✓ ${n} owned`;
+}
+
+function setView(mode) {
+  viewMode = mode;
+  document.getElementById("gridViewBtn").classList.toggle("active", mode === "grid");
+  document.getElementById("listViewBtn").classList.toggle("active", mode === "list");
+  render();
+}
+
+// Build filter buttons
+const filtersEl = document.getElementById("filters");
+waveFilters.forEach(w => {
+  const btn = document.createElement("button");
+  btn.className = "filter-btn" + (w === "All" ? " active" : "");
+  btn.textContent = w;
+  const wc = w === "All" ? "#f97316" : w === "Packs" ? "#22c55e" : w === "Keychains" ? "#0891b2" : w === "Pré-Reserva" ? "#fbbf24" : (waveColors[w] || "#f97316");
+  if (w === "All") btn.style.cssText = `background:${wc};color:#000;border-color:${wc}`;
+  btn.addEventListener("click", () => {
+    activeWave = w;
+    document.querySelectorAll(".filter-btn").forEach(b => { b.classList.remove("active"); b.style.cssText = ""; });
+    btn.classList.add("active"); btn.style.cssText = `background:${wc};color:#000;border-color:${wc}`;
+    render();
+  });
+  filtersEl.appendChild(btn);
+});
+
+updateStats(); render();
+document.getElementById("search").addEventListener("input", render);
+</script>
+</body>
+</html>
