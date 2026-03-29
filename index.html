@@ -292,6 +292,22 @@ input[type="text"]::placeholder { color: var(--muted); }
 }
 .vbtn.active { background: var(--gold); border-color: var(--gold); color: #000; }
 
+/* export / import */
+.sync-wrap { display: flex; gap: 6px; align-items: center; }
+.sync-btn {
+  background: transparent;
+  border: 1px solid var(--border-hi);
+  border-radius: 3px; cursor: pointer;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase; padding: 5px 13px;
+  transition: all .15s; white-space: nowrap; color: var(--muted2);
+}
+.sync-btn:hover { background: var(--gold-lo); color: var(--cream); border-color: var(--gold); }
+.sync-btn.export:hover { border-color: var(--gold-hi); color: var(--gold-hi); }
+.sync-btn.import:hover { border-color: #38bdf8; color: #38bdf8; }
+#importFile { display: none; }
+
 /* ══════════════════════════════════════════════════
    SECTION LABELS — franchise headers
 ══════════════════════════════════════════════════ */
@@ -612,9 +628,16 @@ footer {
       <div class="opill" id="ownedCount">✓ 0 owned</div>
       <div class="cpill" id="countPill">Showing 0 items</div>
     </div>
-    <div class="vtog">
-      <button class="vbtn active" id="gvBtn" title="Grid" onclick="setView('grid')">⊞</button>
-      <button class="vbtn"        id="lvBtn" title="List" onclick="setView('list')">☰</button>
+    <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+      <div class="sync-wrap">
+        <button class="sync-btn export" onclick="exportCollection()" title="Export your collection to a JSON file">⬇ Export</button>
+        <button class="sync-btn import" onclick="document.getElementById('importFile').click()" title="Import a previously exported collection">⬆ Import</button>
+        <input type="file" id="importFile" accept=".json" onchange="importCollection(event)">
+      </div>
+      <div class="vtog">
+        <button class="vbtn active" id="gvBtn" title="Grid" onclick="setView('grid')">⊞</button>
+        <button class="vbtn"        id="lvBtn" title="List" onclick="setView('list')">☰</button>
+      </div>
     </div>
   </div>
 </div>
@@ -969,6 +992,58 @@ waveFilters.forEach(w => {
   });
   filtersEl.appendChild(btn);
 });
+
+// ─── EXPORT / IMPORT ─────────────────────────────────────────────
+function exportCollection() {
+  const data = {
+    version: 1,
+    exported: new Date().toISOString(),
+    owned: [...owned],
+  };
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement("a");
+  const date = new Date().toISOString().slice(0, 10);
+  a.href = url;
+  a.download = `blizzard-funko-collection-${date}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function importCollection(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const data = JSON.parse(e.target.result);
+      if (!data.owned || !Array.isArray(data.owned))
+        throw new Error("Invalid format");
+
+      const count = data.owned.length;
+      if (!confirm(`Import ${count} owned item${count !== 1 ? "s" : ""}?\n\nThis will replace your current collection on this device.`))
+        return;
+
+      owned.clear();
+      data.owned.forEach(k => owned.add(k));
+      localStorage.setItem("bz_owned", JSON.stringify([...owned]));
+      render();
+
+      // visual feedback
+      const btn = document.querySelector(".sync-btn.import");
+      const orig = btn.textContent;
+      btn.textContent = `✓ ${count} imported`;
+      btn.style.color = "#22c55e";
+      btn.style.borderColor = "#22c55e";
+      setTimeout(() => { btn.textContent = orig; btn.style.color = ""; btn.style.borderColor = ""; }, 2500);
+    } catch (err) {
+      alert("Could not read the file. Make sure it is a valid Blizzard collection export.");
+    }
+  };
+  reader.readAsText(file);
+  // reset so same file can be re-imported
+  event.target.value = "";
+}
 
 // ─── INIT ─────────────────────────────────────────────────────────
 updateStats(); render();
