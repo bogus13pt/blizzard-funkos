@@ -422,8 +422,40 @@ input[type="text"]::placeholder { color: var(--muted); }
   opacity: 1;
 }
 
-/* ── card image area ──────────────────────────── */
-.cimg {
+/* ── LIMITED EDITION CARDS ───────────────────────────────────── */
+.card.limited {
+  border-color: rgba(232,184,75,0.55);
+  background: linear-gradient(155deg, #0d0d1e 0%, #111122 100%);
+}
+/* animated gold shimmer border */
+.card.limited::before {
+  background: linear-gradient(90deg,
+    transparent 0%, var(--gold-hi) 40%, #fff8e0 50%, var(--gold-hi) 60%, transparent 100%);
+  opacity: 1;
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+}
+@keyframes shimmer {
+  0%   { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+.card.limited .cimg::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 0;
+  background: linear-gradient(135deg,
+    rgba(232,184,75,0.06) 0%, transparent 50%, rgba(232,184,75,0.04) 100%);
+}
+/* LE badge — bottom right of image area */
+.le-badge {
+  position: absolute; bottom: 8px; right: 8px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 9px; font-weight: 900; letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 3px 8px; border-radius: 2px;
+  background: linear-gradient(135deg, #c8922a, #e8b84b);
+  color: #000; z-index: 3; white-space: nowrap;
+  box-shadow: 0 1px 8px rgba(200,146,42,0.5);
+}
   height: 180px;
   display: flex; align-items: center; justify-content: center;
   overflow: hidden; position: relative;
@@ -675,7 +707,7 @@ const pops = [
   // ══════════════════════════════════════════════════════════
   {num:"14",   name:"Illidan",                       wave:"World of Warcraft", size:'3.75"', excl:null,                        col:"#7c3aed", img:"imgs/14-funko-pop-figure-world-of-warcraft-illidan.jpg"},
   {num:"14",   name:"Illidan (Metallic)",             wave:"World of Warcraft", size:'3.75"', excl:"Blizzard",                  col:"#6d28d9", img:"imgs/14-funko-pop-figure-world-of-warcraft-illidan-metallic.jpg"},
-  {num:"14",   name:"Illidan (Black Shadow)",         wave:"World of Warcraft", size:'3.75"', excl:"SDCC 2013",                 col:"#1e1b4b", img:"imgs/14-illidan-black.jpg"},
+  {num:"14",   name:"Illidan (Black Shadow)",         wave:"World of Warcraft", size:'3.75"', excl:"SDCC 2013",                 col:"#1e1b4b", img:"imgs/14-illidan-black.jpg",                           limited:true, qty:1008},
   {num:"14",   name:"Illidan (Gold)",                 wave:"World of Warcraft", size:'3.75"', excl:"Pop Asia 2015",             col:"#ca8a04", img:"imgs/14-illidan-gold.jpg"},
   {num:"15",   name:"Arthas",                         wave:"World of Warcraft", size:'3.75"', excl:null,                        col:"#60a5fa", img:"imgs/15-funko-pop-figure-world-of-warcraft-arthas.jpg"},
   {num:"30",   name:"Sylvanas",                       wave:"World of Warcraft", size:'3.75"', excl:null,                        col:"#9333ea", img:"imgs/30-sylvanas.jpg"},
@@ -684,8 +716,8 @@ const pops = [
   {num:"32",   name:"Deathwing",                      wave:"World of Warcraft", size:'6"',    excl:null,                        col:"#dc2626", img:"imgs/32-deathwing.jpg"},
   {num:"32",   name:"Deathwing (Gold)",               wave:"World of Warcraft", size:'6"',    excl:"Pop Asia 2015",             col:"#ca8a04", img:"imgs/32-deathwing-gold.jpg"},
   {num:"33",   name:"Murloc",                         wave:"World of Warcraft", size:'3.75"', excl:null,                        col:"#22c55e", img:"imgs/33-funko-pop-figure-world-of-warcraft-murloc.jpg"},
-  {num:"33",   name:"Murloc (GITD)",                  wave:"World of Warcraft", size:'3.75"', excl:"ECCC 2016 · 300 pcs",       col:"#4ade80", img:"imgs/33-murloc-glow.jpg"},
-  {num:"33",   name:"Murloc (Spectral)",              wave:"World of Warcraft", size:'3.75"', excl:"SDCC 2016 · 2016 pcs",      col:"#a7f3d0", img:"imgs/33-murloc-spectral.jpg"},
+  {num:"33",   name:"Murloc (GITD)",                  wave:"World of Warcraft", size:'3.75"', excl:"ECCC 2016",                 col:"#4ade80", img:"imgs/33-murloc-glow.jpg",                            limited:true, qty:300},
+  {num:"33",   name:"Murloc (Spectral)",              wave:"World of Warcraft", size:'3.75"', excl:"SDCC 2016",                 col:"#a7f3d0", img:"imgs/33-murloc-spectral.jpg",                        limited:true, qty:2016},
   {num:"33",   name:"Murloc (White)",                 wave:"World of Warcraft", size:'3.75"', excl:"GameStop",                  col:"#e2e8f0", img:"imgs/33-murloc-white-new.jpg"},
   {num:"33",   name:"Murloc (Purple)",                wave:"World of Warcraft", size:'3.75"', excl:"Blizzard",                  col:"#a855f7", img:"imgs/33-murloc-purple.jpg"},
   {num:"33",   name:"Murloc Blue (GITD)",             wave:"World of Warcraft", size:'3.75"', excl:"Blizzard",                  col:"#38bdf8", img:"imgs/33-murloc-blue-glow.jpg"},
@@ -736,7 +768,7 @@ const pops = [
   {num:"1008", name:"Mephisto",                       wave:"Diablo",            size:'3.75"', excl:null,                        col:"#7f1d1d", img:"imgs/1008-mephisto.jpg"},
   {num:"1009", name:"Rogue with Daggers",             wave:"Diablo",            size:'3.75"', excl:null,                        col:"#991b1b", img:"imgs/diablo-rogue.jpg"},
   {num:"1010", name:"The Butcher",                    wave:"Diablo",            size:'6"',    excl:null,                        col:"#7f1d1d", img:"imgs/diablo-butcher.jpg"},
-  {num:"127",  name:"Angel Imperius",                 wave:"Diablo",            size:'5.2"',  excl:"Funko Shop LE 5000 · 2025", col:"#fbbf24", img:"imgs/127-angel-imperius.jpg"},
+  {num:"127",  name:"Angel Imperius",                 wave:"Diablo",            size:'5.2"',  excl:"Funko Shop · 2025",         col:"#fbbf24", img:"imgs/127-angel-imperius.jpg",                        limited:true, qty:5000},
 
   {num:"1047", name:"Deckard Cain",                   wave:"Diablo",            size:'3.75"', excl:null,                        col:"#78350f", img:"imgs/1047-deckard-cain.jpg"},
 
@@ -747,7 +779,7 @@ const pops = [
   // STARCRAFT — Pop! Games
   // ══════════════════════════════════════════════════════════
   {num:"18",   name:"Kerrigan",                       wave:"StarCraft",         size:'3.75"', excl:null,                        col:"#7c3aed", img:"imgs/18-kerrigan-sg.jpg"},
-  {num:"18",   name:"Kerrigan — Primal (Metallic)",   wave:"StarCraft",         size:'3.75"', excl:"SDCC 2014 · 2500 pcs",      col:"#6d28d9", img:"imgs/18-kerrigan-primal.jpg"},
+  {num:"18",   name:"Kerrigan — Primal (Metallic)",   wave:"StarCraft",         size:'3.75"', excl:"SDCC 2014",                 col:"#6d28d9", img:"imgs/18-kerrigan-primal.jpg",                        limited:true, qty:2500},
   {num:"19",   name:"Jim Raynor",                     wave:"StarCraft",         size:'3.75"', excl:null,                        col:"#0891b2", img:"imgs/19-funko-pop-figure-starcraft-jim-raynor.jpg"},
 
   {num:"977",  name:"Kerrigan com Asas",              wave:"StarCraft",         size:'3.75"', excl:"GameStop · Wings of Liberty",col:"#a855f7", img:"imgs/977-kerrigan-wings.jpg"},
@@ -755,11 +787,11 @@ const pops = [
   // ══════════════════════════════════════════════════════════
   // HEROES OF THE STORM — Pop! Games
   // ══════════════════════════════════════════════════════════
-  {num:"61",   name:"Demonic Tyrael",                 wave:"Heroes of the Storm",size:'3.75"',excl:"SDCC 2015 / Blizzard",      col:"#f59e0b", img:"imgs/61-demonic-tyrael.jpg"},
+  {num:"61",   name:"Demonic Tyrael",                 wave:"Heroes of the Storm",size:'3.75"',excl:"SDCC 2015 / Blizzard",      col:"#f59e0b", img:"imgs/61-demonic-tyrael.jpg",                         limited:true, qty:500},
 ];
 
 const packs = [
-  {name:"Murloc 3-Pack",       wave:"WoW Multi-Pack", excl:"SDCC 2015 · 2016 pcs", col:"#22c55e", img:"imgs/pack-murloc-3pack.jpg"},
+  {name:"Murloc 3-Pack",       wave:"WoW Multi-Pack", excl:"SDCC 2015",           col:"#22c55e", img:"imgs/pack-murloc-3pack.jpg",  limited:true, qty:2016},
   {name:"Durotan & Orgrim",    wave:"WoW Multi-Pack", excl:"FYE",                  col:"#78350f", img:"imgs/pack-durotan-orgrim.jpg"},
 ];
 
@@ -815,8 +847,10 @@ function makeCard(data, delay) {
   const isOwn = owned.has(key);
   const isKC  = !!(data.wave && data.wave.startsWith("KC-"));
 
+  const isLtd = !!data.limited;
+
   const card = document.createElement("div");
-  card.className = "card" + (isOwn ? " owned" : "");
+  card.className = "card" + (isOwn ? " owned" : "") + (isLtd ? " limited" : "");
   card.style.animationDelay = delay + "s";
 
   /* image area */
@@ -836,6 +870,13 @@ function makeCard(data, delay) {
   const badge = document.createElement("div"); badge.className = "wbadge";
   badge.style.background = wc; badge.textContent = data.wave;
   imgA.appendChild(badge);
+
+  /* limited edition badge */
+  if (isLtd) {
+    const le = document.createElement("div"); le.className = "le-badge";
+    le.textContent = data.qty ? `LE ${data.qty.toLocaleString()}` : "LIMITED";
+    imgA.appendChild(le);
+  }
 
   /* owned button */
   const ob = document.createElement("div");
